@@ -1,5 +1,8 @@
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering;
 using VContainer.Unity;
+using static UnityEngine.Rendering.HableCurve;
 
 public class SnakeController : ITickable, IStartable
 {
@@ -22,7 +25,15 @@ public class SnakeController : ITickable, IStartable
 
     public void Tick()
     {
+        int diff = _model.Segments.Count - _view.SnakeViewParts;
+        if (diff > 0) 
+            _view.Grow(diff);
         _model.MoveForward(_inputProvider.GetDirection(), Time.deltaTime);
         _view.Draw(_model.Segments, _model.CurrentAngle);
+
+    }
+    public void Eat(Food food)
+    {
+        _model.Grow(food.Saturation);
     }
 }

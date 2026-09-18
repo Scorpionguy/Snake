@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -5,7 +6,6 @@ using UnityEngine;
 
 public class SnakeModel
 {
-    public event Action<SnakeModel> OnFoodEaten;
     public List<Vector2> Segments {  get; private set; }    
     
     public float CurrentAngle { get; private set; }
@@ -44,12 +44,12 @@ public class SnakeModel
                 Segments[i] = targetPos - (moveDir * Spacing);
             }
         }
-        Debug.Log(Segments[0]);
     }
     public void Born(Vector2 pos)
     {
         if (Segments.Count <= 0)
         {
+            for (int i = 3; i > 0; i--) 
             Segments.Add(pos);
             return;
         }
@@ -65,8 +65,11 @@ public class SnakeModel
             Segments[i] = pos;
         }
     }
-    public void Grow()
+    public void Grow(int saturation)
     {
-        Segments.Add(Segments[Segments.Count - 1]);
+        for (int i = 0; i < saturation; i++)
+        {
+            Segments.Add(Segments[Segments.Count - 1]);
+        }
     }
 }

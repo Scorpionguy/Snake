@@ -16,4 +16,4 @@ MonoBehaviour:
   initialAngle: 0
   initialSpeed: 3
   turnSpeed: 150
-  spacing: 0
+  spacing: 0.8

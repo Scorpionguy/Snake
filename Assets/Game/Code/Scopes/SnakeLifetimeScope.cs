@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class SnakeLifetimeScope : LifetimeScope
 {
-    [SerializeField] private CharacterController _charracterController;
     [SerializeField] private SnakeView _snakeView;
-    [SerializeField] private PlayerMovement _playerMovement;
     [SerializeField] private SnakeConfig _snakeConfig;
+    [SerializeField] private HeadCollisionListener _headCollisionListener;
     
     protected override void Configure(IContainerBuilder builder)
     {
+        builder.RegisterComponent(_snakeView);
         builder.Register<SnakeModel>(Lifetime.Singleton).WithParameter(_snakeConfig);
         builder.Register<InputProvider>(Lifetime.Singleton)
             .As<IInputProvider>();
-        builder.RegisterEntryPoint<SnakeController>(Lifetime.Singleton);
+        builder.RegisterEntryPoint<SnakeController>(Lifetime.Singleton)
+            .AsSelf();
 
-        builder.RegisterComponent(_snakeView);
-        builder.RegisterComponent(_charracterController);
-        //builder.RegisterComponent(_playerMovement);
+        builder.RegisterComponent(_headCollisionListener);
+        builder.RegisterEntryPoint<HeadCollisionHandler>(Lifetime.Singleton);
     }
 }

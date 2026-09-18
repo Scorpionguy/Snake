@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using VContainer;
-using static UnityEngine.Rendering.HableCurve;
 
 public class SnakeView : MonoBehaviour
 {
@@ -12,6 +11,7 @@ public class SnakeView : MonoBehaviour
     //private SnakeModel _model;
 
     private List<GameObject> BodyParts = new List<GameObject>();
+    public int SnakeViewParts => BodyParts.Count;
     public void Draw(List<Vector2> segments, float angle)
     {
         for (int i = 0; i < BodyParts.Count; i++)
@@ -21,17 +21,21 @@ public class SnakeView : MonoBehaviour
         }
         gameObject.transform.position = segments[0];
         gameObject.transform.rotation = Quaternion.Euler(0, 0, angle);
+        
     }
     public void CreateSnake(List<Vector2> segments)
     {
         //BodyParts[0] = Instantiate(_head, gameObject.transform);
-        BodyParts.Add(Instantiate(_head, gameObject.transform));
-
-            
+        BodyParts.Add(_head);   
+        
     }
-    private void Grow(Vector2 segment)
+    public void Grow(int diff)
     {
-        BodyParts.Add(Instantiate(_body));
-        BodyParts[BodyParts.Count - 1].transform.position = segment;
-    }
+        //BodyParts.Add(Instantiate(_body));
+        //BodyParts[BodyParts.Count - 1].transform.position = segment;  
+            for (int i = 0; i < diff; i++)
+            {
+            BodyParts.Add(Instantiate(_body, gameObject.transform));
+            }
+        }
 }
