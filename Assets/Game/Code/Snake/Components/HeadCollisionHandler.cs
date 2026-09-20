@@ -25,10 +25,8 @@ public class HeadCollisionHandler : IStartable, IDisposable
         _headCollisionListener.onPickup += EatFood;
     }
 
-    private void EatFood(Food food)
+    private void EatFood(FoodItem food)
     {
         _snakeController.Eat(food);
-
-        Debug.Log("Invoked epta");
     }
 }

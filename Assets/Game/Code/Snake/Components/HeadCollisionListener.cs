@@ -3,22 +3,14 @@ using UnityEngine;
 
 public class HeadCollisionListener : MonoBehaviour
 {
-    public event Action<Food> onPickup;
+    public event Action<FoodItem> onPickup;
 
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    Debug.Log("HELLLLLLLLLLLLLLLL YEAAAAAAAAAAAAAAAAAAH");
-    //    if (!collision.gameObject.TryGetComponent(out Food food)) return;
-
-    //    onPickup.Invoke(food);
-    //}
-    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("HELLLLLLLLLLLLLLLL YEAAAAAAAAAAAAAAAAAAH");
         if (!collision.gameObject.TryGetComponent(out Food food)) return;
 
-        onPickup?.Invoke(food);
+        onPickup?.Invoke(food.GetFoodItem());
         if (onPickup != null)
         Destroy(collision.gameObject);
     }

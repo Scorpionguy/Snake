@@ -19,8 +19,8 @@ public class SnakeView : MonoBehaviour
             BodyParts[i].transform.position = segments[i];
             BodyParts[i].transform.rotation = Quaternion.Euler(0, 0, angle);
         }
-        gameObject.transform.position = segments[0];
-        gameObject.transform.rotation = Quaternion.Euler(0, 0, angle);
+        //gameObject.transform.position = segments[0];
+        //gameObject.transform.rotation = Quaternion.Euler(0, 0, angle);
         
     }
     public void CreateSnake(List<Vector2> segments)

@@ -32,7 +32,7 @@ public class SnakeController : ITickable, IStartable
         _view.Draw(_model.Segments, _model.CurrentAngle);
 
     }
-    public void Eat(Food food)
+    public void Eat(FoodItem food)
     {
         _model.Grow(food.Saturation);
     }
