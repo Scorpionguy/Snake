@@ -18,6 +18,7 @@ public class HeadCollisionHandler : IStartable, IDisposable
     public void Dispose()
     {
         _headCollisionListener.onPickup -= EatFood;
+
     }
 
     public void Start()

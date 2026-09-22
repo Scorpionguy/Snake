@@ -6,12 +6,13 @@ using VContainer.Unity;
 public class GameLifetimeScope : LifetimeScope
 {
     [SerializeField] private FoodDatabase _foodDatabase;
+    [SerializeField] private SpawnConfig spawnConfig;
     [SerializeField] private List<GameObject> spawners = new List<GameObject>();
 
     protected override void Configure(IContainerBuilder builder)
     {
         builder.RegisterComponent(_foodDatabase);
-
+        builder.RegisterComponent(spawnConfig);
 
         for (int i = 0; i < spawners.Count; i++)
         {

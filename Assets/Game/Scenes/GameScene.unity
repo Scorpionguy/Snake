@@ -3186,7 +3186,7 @@ Tilemap:
     m_Data: {fileID: -1844109271, guid: 027fd9e06196b4e62a8e40527bfbf3a9, type: 3}
   m_TileMatrixArray:
   - serializedVersion: 2
-    m_RefCount: 528
+    m_RefCount: 264
     m_Data:
       e00: 1
       e01: 0
@@ -3339,6 +3339,7 @@ MonoBehaviour:
   autoInjectGameObjects:
   - {fileID: 1868675983}
   _foodDatabase: {fileID: 11400000, guid: 913ef2bef9135ce44be3f78675c513a3, type: 2}
+  spawnConfig: {fileID: 11400000, guid: 3f242c69227c9c94e88a19613603952f, type: 2}
   spawners:
   - {fileID: 1868675983}
 --- !u!4 &1386309147
